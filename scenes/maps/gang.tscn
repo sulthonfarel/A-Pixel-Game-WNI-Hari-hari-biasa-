@@ -1,0 +1,151 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/location_view.gd" id="1_bv77u"]
+[ext_resource type="Texture2D" path="res://assets/gang_bg.png" id="2_y1fq1"]
+[ext_resource type="PackedScene" path="res://scenes/entities/ayam.tscn" id="3_j438h"]
+[ext_resource type="Script" path="res://scripts/ayam.gd" id="4_d6oud"]
+[ext_resource type="PackedScene" path="res://scenes/sections/player.tscn" id="5_v1j8g"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="6_wy0me"]
+[ext_resource type="Script" path="res://scripts/interact_marker.gd" id="7_i2w7q"]
+[ext_resource type="Script" path="res://scripts/interactable.gd" id="8_xeynk"]
+[ext_resource type="Script" path="res://scripts/pintu.gd" id="9_y86ve"]
+[ext_resource type="Script" path="res://scripts/tepi_lokasi.gd" id="10_pbo01"]
+
+[node name="Gang" type="Node2D" unique_id=1789751263]
+script = ExtResource("1_bv77u")
+loc_id = "gang"
+nama = "Gang Sukamaju"
+ukuran = Vector2(1053, 270)
+y_min = 224.0
+y_max = 252.0
+x_max = 1040.0
+tinggi_sprite = 75
+kecepatan_jalan = 1.05
+warna_lantai = Color(0.43137255, 0.38431373, 0.3372549, 1)
+warna_dinding = Color(0, 0, 0, 1)
+pejalan_kaki = true
+papan = [["MASJID AL-IKHLAS", 136, 95, 66, 9, "#e8dcb0", "#2f6f4f"], ["POS RONDA RW 05", 738, 140, 66, 8, "#5a3a22", "#f1e0b8"]]
+jendela_lampu = [[105, 128, 24, 58], [207, 128, 24, 58], [257, 138, 52, 38], [429, 143, 42, 40], [651, 143, 41, 40], [916, 143, 44, 40]]
+lampu_x = PackedFloat32Array(128, 300, 560, 700, 930)
+
+[node name="Latar" type="Sprite2D" parent="." unique_id=497292798]
+show_behind_parent = true
+texture = ExtResource("2_y1fq1")
+centered = false
+
+[node name="Entities" type="Node2D" parent="." unique_id=1377277191]
+y_sort_enabled = true
+
+[node name="Ayam1" type="Node2D" parent="Entities" unique_id=1175665137 instance=ExtResource("3_j438h")]
+position = Vector2(320, 239)
+script = ExtResource("4_d6oud")
+
+[node name="Ayam2" type="Node2D" parent="Entities" unique_id=253313700 instance=ExtResource("3_j438h")]
+position = Vector2(560, 239)
+script = ExtResource("4_d6oud")
+warna = Color(0.84705883, 0.78431374, 0.65882355, 1)
+
+[node name="PlayerPratinjau" type="Node2D" parent="Entities" unique_id=1527184393 groups=["preview_editor"] instance=ExtResource("5_v1j8g")]
+position = Vector2(44, 230)
+script = ExtResource("6_wy0me")
+editor_preview_sprite_height = 75
+
+[node name="InteractMarker" type="Node2D" parent="." unique_id=70220907]
+script = ExtResource("7_i2w7q")
+
+[node name="Spawns" type="Node2D" parent="." unique_id=823706169]
+
+[node name="kos" type="Marker2D" parent="Spawns" unique_id=445239755]
+position = Vector2(44, 230)
+
+[node name="masjid" type="Marker2D" parent="Spawns" unique_id=1287048599]
+position = Vector2(168, 230)
+
+[node name="kanan" type="Marker2D" parent="Spawns" unique_id=21830372]
+position = Vector2(1000, 236)
+
+[node name="Objek" type="Node2D" parent="." unique_id=1099632058]
+
+[node name="warung_madura" type="Node2D" parent="Objek" unique_id=682238422]
+position = Vector2(497, 160)
+script = ExtResource("8_xeynk")
+label = "Bicara dengan penjual Warung Madura (24 jam)"
+size = Vector2(88, 62)
+
+[node name="gerobak" type="Node2D" parent="Objek" unique_id=1674609821]
+position = Vector2(1004, 170)
+script = ExtResource("8_xeynk")
+label = "Gerobak batagor (parkir)"
+size = Vector2(48, 52)
+
+[node name="gardu" type="Node2D" parent="Objek" unique_id=914619894]
+position = Vector2(726, 166)
+script = ExtResource("8_xeynk")
+label = "Gardu ronda (duduk & ngobrol)"
+size = Vector2(86, 56)
+
+[node name="selebaran" type="Node2D" parent="Objek" unique_id=1788034835]
+position = Vector2(813, 150)
+script = ExtResource("8_xeynk")
+label = "Baca selebaran di dinding"
+size = Vector2(38, 30)
+
+[node name="nasi_kotak" type="Node2D" parent="Objek" unique_id=1944809304]
+position = Vector2(160, 214)
+script = ExtResource("8_xeynk")
+label = "Ambil nasi kotak"
+size = Vector2(46, 14)
+syarat_flag = "nasi_kotak_hari"
+
+[node name="jumat_berkah" type="Node2D" parent="Objek" unique_id=1605986467]
+position = Vector2(160, 214)
+script = ExtResource("8_xeynk")
+label = "Jumat Berkah (makanan gratis)"
+size = Vector2(46, 14)
+syarat_flag = "jumat_berkah_aktif"
+
+[node name="wudu" type="Node2D" parent="Objek" unique_id=1349176398]
+position = Vector2(62, 198)
+script = ExtResource("8_xeynk")
+label = "Tempat wudu"
+size = Vector2(22, 24)
+
+[node name="rak_sandal" type="Node2D" parent="Objek" unique_id=95695824]
+position = Vector2(134, 204)
+script = ExtResource("8_xeynk")
+label = "Rak sandal masjid"
+size = Vector2(16, 14)
+
+[node name="kucing" type="Node2D" parent="Objek" unique_id=1615806755]
+position = Vector2(376, 224)
+script = ExtResource("8_xeynk")
+label = "Elus kucing kampung"
+size = Vector2(20, 12)
+
+[node name="Pintu" type="Node2D" parent="." unique_id=1133625957]
+
+[node name="d_kos" type="Node2D" parent="Pintu" unique_id=580800109]
+position = Vector2(24, 158)
+script = ExtResource("9_y86ve")
+ke = "koridor"
+spawn = "tangga"
+nama_tujuan = "Koridor kos"
+label = "Naik tangga ke koridor kos (lantai 2)"
+size = Vector2(44, 64)
+
+[node name="d_masjid" type="Node2D" parent="Pintu" unique_id=959559997]
+position = Vector2(150, 125)
+script = ExtResource("9_y86ve")
+ke = "masjid"
+spawn = "masuk"
+nama_tujuan = "Masjid Al-Ikhlas"
+label = "Masuk Masjid Al-Ikhlas"
+size = Vector2(38, 95)
+
+[node name="Tepi" type="Node2D" parent="." unique_id=206644628]
+
+[node name="TepiKanan" type="Marker2D" parent="Tepi" unique_id=1460639236]
+script = ExtResource("10_pbo01")
+ke = "lapangan"
+spawn = "kiri"
+label = "Ujung gang → Lapangan RW 05 (Warteg Bu Tati, Balai RW)"

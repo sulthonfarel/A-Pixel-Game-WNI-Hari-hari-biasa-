@@ -1,0 +1,136 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/location_view.gd" id="1_qj5fg"]
+[ext_resource type="Texture2D" path="res://assets/lapangan_bg.png" id="2_hei6c"]
+[ext_resource type="PackedScene" path="res://scenes/entities/ayam.tscn" id="3_i22eh"]
+[ext_resource type="Script" path="res://scripts/ayam.gd" id="4_ivn0d"]
+[ext_resource type="PackedScene" path="res://scenes/sections/player.tscn" id="5_1hhkh"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="6_6kokn"]
+[ext_resource type="Script" path="res://scripts/interact_marker.gd" id="7_4y6lt"]
+[ext_resource type="Script" path="res://scripts/interactable.gd" id="8_k4a7w"]
+[ext_resource type="Script" path="res://scripts/tepi_lokasi.gd" id="9_mswyg"]
+
+[node name="Lapangan" type="Node2D" unique_id=749825702]
+script = ExtResource("1_qj5fg")
+loc_id = "lapangan"
+nama = "Lapangan RW 05"
+ukuran = Vector2(869, 270)
+y_min = 242.0
+y_max = 266.0
+x_max = 859.0
+tinggi_sprite = 100
+kecepatan_jalan = 1.05
+warna_lantai = Color(0.5411765, 0.49411765, 0.43137255, 1)
+warna_dinding = Color(0, 0, 0, 1)
+pejalan_kaki = true
+jalur_pejalan = Vector2(246, 262)
+lampu_x = PackedFloat32Array(320, 540, 835)
+
+[node name="Latar" type="Sprite2D" parent="." unique_id=1064576608]
+show_behind_parent = true
+texture = ExtResource("2_hei6c")
+centered = false
+
+[node name="Entities" type="Node2D" parent="." unique_id=1859716144]
+y_sort_enabled = true
+
+[node name="Ayam1" type="Node2D" parent="Entities" unique_id=1342587175 instance=ExtResource("3_i22eh")]
+position = Vector2(90, 256)
+script = ExtResource("4_ivn0d")
+x_min = 60.0
+x_max = 520.0
+
+[node name="Ayam2" type="Node2D" parent="Entities" unique_id=1936513339 instance=ExtResource("3_i22eh")]
+position = Vector2(470, 256)
+script = ExtResource("4_ivn0d")
+x_min = 60.0
+x_max = 520.0
+warna = Color(0.84705883, 0.78431374, 0.65882355, 1)
+
+[node name="PlayerPratinjau" type="Node2D" parent="Entities" unique_id=668293802 groups=["preview_editor"] instance=ExtResource("5_1hhkh")]
+position = Vector2(40, 256)
+script = ExtResource("6_6kokn")
+
+[node name="InteractMarker" type="Node2D" parent="." unique_id=1997462424]
+script = ExtResource("7_4y6lt")
+
+[node name="Spawns" type="Node2D" parent="." unique_id=1847781331]
+
+[node name="kiri" type="Marker2D" parent="Spawns" unique_id=1378005449]
+position = Vector2(40, 256)
+
+[node name="kanan" type="Marker2D" parent="Spawns" unique_id=2053377572]
+position = Vector2(828, 256)
+
+[node name="Objek" type="Node2D" parent="." unique_id=1802955223]
+
+[node name="warteg" type="Node2D" parent="Objek" unique_id=1214792977]
+position = Vector2(183, 200)
+script = ExtResource("8_k4a7w")
+label = "Bicara dengan Bu Tati (Warteg Bu Tati)"
+size = Vector2(123, 48)
+
+[node name="papan_menu" type="Node2D" parent="Objek" unique_id=447975084]
+position = Vector2(296, 160)
+script = ExtResource("8_k4a7w")
+label = "Papan menu warteg"
+size = Vector2(20, 22)
+
+[node name="balai" type="Node2D" parent="Objek" unique_id=837192972]
+position = Vector2(640, 160)
+script = ExtResource("8_k4a7w")
+label = "Bicara dengan Pak RW (Balai RW 05)"
+size = Vector2(100, 88)
+
+[node name="papan_balai" type="Node2D" parent="Objek" unique_id=1921671202]
+position = Vector2(549, 170)
+script = ExtResource("8_k4a7w")
+label = "Papan pengumuman RW"
+size = Vector2(67, 50)
+
+[node name="lapangan" type="Node2D" parent="Objek" unique_id=1640117953]
+position = Vector2(330, 200)
+script = ExtResource("8_k4a7w")
+label = "Lapangan bulutangkis"
+size = Vector2(160, 46)
+
+[node name="kentongan" type="Node2D" parent="Objek" unique_id=206799127]
+position = Vector2(790, 150)
+script = ExtResource("8_k4a7w")
+label = "Pos kamling & kentongan"
+size = Vector2(56, 50)
+
+[node name="lapak_baju" type="Node2D" parent="Objek" unique_id=588199952]
+position = Vector2(112, 206)
+script = ExtResource("8_k4a7w")
+label = "Lapak baju obral"
+size = Vector2(60, 58)
+
+[node name="lapak_baju2" type="Node2D" parent="Objek" unique_id=2037762830]
+position = Vector2(0, 186)
+script = ExtResource("8_k4a7w")
+label = "Gantungan baju obral"
+size = Vector2(39, 78)
+
+[node name="meteran" type="Node2D" parent="Objek" unique_id=1143743207]
+position = Vector2(7, 148)
+script = ExtResource("8_k4a7w")
+label = "Meteran listrik"
+size = Vector2(32, 21)
+
+[node name="Pintu" type="Node2D" parent="." unique_id=2020549692]
+
+[node name="Tepi" type="Node2D" parent="." unique_id=1399120763]
+
+[node name="TepiKiri" type="Marker2D" parent="Tepi" unique_id=211254251]
+script = ExtResource("9_mswyg")
+arah = "kiri"
+ke = "gang"
+spawn = "kanan"
+label = "← Kembali ke Gang Sukamaju"
+
+[node name="TepiKanan" type="Marker2D" parent="Tepi" unique_id=1117446821]
+script = ExtResource("9_mswyg")
+ke = "jalan"
+spawn = "kiri"
+label = "Ujung lapangan → Jalan Sukamaju (fotokopi, kopi, halte)"

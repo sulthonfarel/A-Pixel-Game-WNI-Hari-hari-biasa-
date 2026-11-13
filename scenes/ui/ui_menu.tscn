@@ -1,0 +1,62 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/ui_menu.gd" id="1_6k46t"]
+
+[node name="UIMenu" type="Control" unique_id=272671822]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1_6k46t")
+
+[node name="Redup" type="ColorRect" parent="." unique_id=1520783544]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(0, 0, 0, 0.55)
+
+[node name="Tengah" type="CenterContainer" parent="." unique_id=891988263]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="Panel" type="PanelContainer" parent="Tengah" unique_id=1163020703]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Susunan" type="VBoxContainer" parent="Tengah/Panel" unique_id=1690018977]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="Judul" type="Label" parent="Tengah/Panel/Susunan" unique_id=999690410]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+theme_override_colors/font_color = Color(0.9607843, 0.78039217, 0.41568628, 1)
+horizontal_alignment = 1
+
+[node name="Gulir" type="ScrollContainer" parent="Tengah/Panel/Susunan" unique_id=985301045]
+unique_name_in_owner = true
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="Badan" type="Label" parent="Tengah/Panel/Susunan/Gulir" unique_id=2056947663]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(380, 0)
+layout_mode = 2
+autowrap_mode = 3
+
+[node name="Petunjuk" type="Label" parent="Tengah/Panel/Susunan" unique_id=944001311]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 7
+theme_override_colors/font_color = Color(0.7, 0.7, 0.8, 1)
+text = "PgUp / PgDn atau roda mouse: gulir teks"
+horizontal_alignment = 1
+
+[node name="Opsi" type="VBoxContainer" parent="Tengah/Panel/Susunan" unique_id=778700324]
+unique_name_in_owner = true
+layout_mode = 2

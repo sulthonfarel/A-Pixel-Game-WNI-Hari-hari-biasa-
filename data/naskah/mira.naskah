@@ -1,0 +1,22 @@
+# TEH MIRA — pemilik Kopi Teh Mira (juga tempat nonton bola & kerja tugas)
+
+== hub
+bicara: Teh Mira
+teks: Mangga, Aa. Kopi atau teh? | jika jam<11
+teks: Siang. Masih sepi, belum ada yang nonton bola. | jika jam<16
+teks: Sore, {nama}. Tempat duduk masih kosong.
+pilihan:
+- Pesan sesuatu -> aksi menu_mira
+- Nonton TV sebentar -> aksi tv
+- Kerjakan tugas di sini (sekalian pesan es teh) -> aksi kerja_kopi
+- Teh Mira, gimana soal Program Kampung Nyaman? -> mira_program | jika hari>=15, flag program_launch, !flag testimoni_mira
+- Cuma mampir.
+
+== mira_program
+bicara: Teh Mira
+teks: Papan informasinya ada, lampu jalan nyala, orang betah nongkrong lama. Tapi jam buka pos layanan nggak ditempel di tempat orang lewat. Ujung-ujungnya yang nanya ke sini. Saya bukan petugas, tapi saya jawab juga.
+efek: flag testimoni_mira, mood +1
+lanjut: mira_program2
+
+== mira_program2
+teks: Dimas mencatat: 'Teh Mira — informasi jam layanan tidak ada di tempat orang sering lewat.'

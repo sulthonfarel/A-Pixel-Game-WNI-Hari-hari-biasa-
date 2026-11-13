@@ -1,0 +1,58 @@
+# KANG ASEP — penjaga Warung Madura di siang hari (malam: Cak Imam, lihat imam.naskah)
+
+== hub
+bicara: Kang Asep
+teks: Pagi, Kang {nama}! Mau beli apa? | jika jam<11
+teks: Siang, Kang. Panas ya. Es batu habis, tapi gosip masih ada. | jika jam<16
+teks: Sore, Kang. Mau belanja atau mau dengar kabar terbaru?
+pilihan:
+- Belanja -> aksi menu_asep
+- Katanya beras bakal langka, Kang? -> asep_hoax | jika flag hoax_beras, hari<=6, !flag hoax_selesai
+- Menurut Kang Asep, Program Kampung Nyaman gimana? -> asep_program | jika flag program_launch, hari>=10, !flag testimoni_asep
+- Warung ini milik siapa, Kang? -> asep_madura
+- Cuma lihat-lihat.
+
+== asep_madura
+bicara: Kang Asep
+teks: Punya Pak Haji Samsul, orang Sumenep. Saya jaga siang, Cak Imam jaga malam. Gantian supaya warung nggak pernah tutup. Dua tahun di sini saya paham satu hal: pelanggan boleh lupa bayar, tapi lupa nama kita jangan.
+efek: mood +1
+
+# --- cerita hoaks beras (hari 4-6): forward, cek, atau abaikan ---
+== asep_hoax
+bicara: Kang Asep
+teks: Kang, denger nggak? Katanya beras bakal langka minggu depan! Pesannya beredar di grup RW. Tadi sudah ada yang borong mi instan. Rak saya hampir kosong!
+pilihan:
+- Wah, forward ke grup kos ah. -> asep_hoax_fwd | efek flag hoax_forward hoax_selesai, mood +1
+- Tunggu, sumbernya mana? Aku cek dulu. -> asep_hoax_cek | efek flag hoax_cek hoax_selesai, waktu 30, mood +2, akrab.asep +1, akrab.rani +1
+- Ah, nggak usah dipikirin. | efek flag hoax_abaikan hoax_selesai
+
+== asep_hoax_fwd
+bicara: Kang Asep
+teks: Nah! Biar yang lain siap-siap juga!
+lanjut: asep_hoax_fwd2
+
+== asep_hoax_fwd2
+teks: Dimas menekan 'kirim'. Tiga menit kemudian, dua orang di grup kos membalas dengan stiker panik.
+
+== asep_hoax_cek
+teks: Dimas menelusuri pesan itu. Gambar yang beredar ternyata tangkapan layar lama dengan tanggal yang diedit. Sumber aslinya tidak ada.
+lanjut: asep_hoax_cek2
+
+== asep_hoax_cek2
+bicara: Kang Asep
+teks: Waduh… untung belum saya sebar. Hatur nuhun, Kang. Besok-besok saya tanya dulu.
+
+# --- catatan warga untuk Program Kampung Nyaman ---
+== asep_program
+bicara: {nama}
+teks: Kang, menurut Akang, Program Kampung Nyaman gimana buat warung ini?
+lanjut: asep_program2
+
+== asep_program2
+bicara: Kang Asep
+teks: Sejak ada acara-acara itu, orang lewat depan warung lebih banyak, lumayan. Tapi waktu jalan ditutup, truk pasokan telat dua hari. Rak kosong, pelanggan nanya terus. Ya… ada untung, ada buntung.
+efek: flag testimoni_asep, mood +1
+lanjut: asep_program3
+
+== asep_program3
+teks: Dimas mencatat: 'Kang Asep — keramaian naik, tapi pasokan telat saat jalan ditutup.'

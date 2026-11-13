@@ -1,0 +1,20 @@
+# PAK DARTO — pemilik kos. Sewa Rp400.000 jatuh tempo hari 20, toleransi sampai 25.
+
+== hub
+bicara: Pak Darto
+teks: Pagi, {nama}. Sudah sarapan? | jika jam<11
+teks: Siang, Nak. Kamar aman? | jika jam<16
+teks: Sore, {nama}. Jemuran jangan numpuk di teras ya.
+tambah: Sewa bulan ini, ya. Saya tunggu sampai tanggal 25. Saya nggak galak, tapi bendahara listrik lebih nggak sabaran. | jika hari>=20, !flag sewa_lunas
+pilihan:
+- Bayar sewa ({tagihan}) -> aksi bayar_sewa | jika !flag sewa_lunas
+- Beli kursi bekas (Rp50.000) -> aksi beli_kursi | jika !flag kursi
+- Soal listrik, Pak… -> darto_listrik
+- Permisi, Pak.
+
+# Sisa token listrik ditampilkan lewat {listrik}
+== darto_listrik
+bicara: Pak Darto
+teks: Listrik kos naik terus. Anak-anak nyalain kipas, kompor listrik, charger, lampu… semuanya barengan. Saya cuma minta: matikan lampu kalau keluar. Itu juga sedekah, kan?
+tambah: (Meteran kamarmu: token HABIS, belilah di Warung Madura.) | jika listrik<=0
+tambah: (Meteran kamarmu: token cukup untuk {listrik} hari lagi.) | jika listrik>0

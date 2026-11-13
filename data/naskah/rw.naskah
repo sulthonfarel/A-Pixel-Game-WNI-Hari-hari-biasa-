@@ -1,0 +1,72 @@
+# PAK RW — Ketua RW 05. Balai buka Senin–Jumat jam kerja.
+# Rapat warga (hari 27) ada di rapat.naskah; dimulai lewat pilihan "-> aksi rapat" di bawah.
+
+== hub
+bicara: Pak RW
+teks: Selamat pagi, {nama}. Ada yang bisa dibantu? | jika jam<11
+teks: Siang, Nak. Silakan duduk. | jika jam<16
+teks: Sore, {nama}. Kantor hampir tutup.
+pilihan:
+- Titipan paket dari Fikri, Pak. -> rw_paket | jika inv.paket>=1
+- Pak, rapatnya sudah bisa dimulai? -> aksi rapat | jika hari=27, jam>=19, !flag rapat_hadir
+- Tanya soal Program Kampung Nyaman -> rw_program
+# Surat pengantar (dibuka hari 9): mulai -> bawa salinan KTP & KK -> selesai
+- Saya mau urus surat pengantar domisili. -> rw_surat1 | jika hari>=9, !flag surat_selesai, !flag surat_mulai
+- Saya sudah bawa salinan KTP & KK, Pak. -> rw_surat_ok | jika hari>=9, !flag surat_selesai, flag surat_mulai, inv.salinan>=1
+- Soal surat pengantar tadi, Pak… -> rw_surat_blm | jika hari>=9, !flag surat_selesai, flag surat_mulai, inv.salinan<=0
+- Pak, saya punya catatan pengalaman beberapa warga. -> rw_catatan | jika hari>=18, catatan>=1, !flag catatan_diserahkan
+- Pak, soal jam buka pos layanan… -> rw_jam | jika flag rani_janji, !flag rw_pertanyaan_rani, hari>=12
+- Permisi, Pak.
+
+== rw_program
+bicara: Pak RW
+teks: Program Kampung Nyaman itu inisiatif memperbaiki fasilitas dan layanan di lingkungan kita: ada 12 kegiatan. Penerangan, perbaikan jalan, papan informasi, pos layanan, taman, dan seterusnya. Setiap kegiatan selesai kami laporkan ke kecamatan.
+lanjut: rw_program2
+
+== rw_program2
+bicara: {nama}
+teks: Kalau warga punya keluhan, lapornya ke siapa, Pak?
+lanjut: rw_program3
+
+== rw_program3
+bicara: Pak RW
+teks: Ke saya. Senin sampai Jumat, jam delapan sampai tiga, kecuali istirahat. Lewat dari itu… ya, besok.
+
+== rw_paket
+bicara: Pak RW
+teks: Oh, ini yang ditunggu. Terima kasih ya, Nak. Ini sedikit uang jasa. Salam buat Fikri.
+efek: inv.paket -1, flag paket_selesai, akrab.fikri +1, akrab.rw +1, uang +5000, mood +2, hitung.bantu +1
+
+== rw_surat1
+bicara: Pak RW
+teks: Surat pengantar? Boleh. Bawa fotokopi KTP dan KK, ya. Di fotokopian dekat sini.
+efek: flag surat_mulai surat_butuh_salinan
+lanjut: rw_surat1b
+
+== rw_surat1b
+bicara: {nama}
+teks: Bukannya formulirnya online, Pak?
+lanjut: rw_surat1c
+
+== rw_surat1c
+bicara: Pak RW
+teks: Pendaftarannya online, betul. Tapi tetap harus ditempel salinan fisik yang dicap basah. Sistemnya modern, stempelnya tradisional.
+
+== rw_surat_ok
+bicara: Pak RW
+teks: Nah, lengkap. Sebentar, saya cap dulu. Dan… selesai. Rapi sekali. Biasanya ada yang kurang satu lembar.
+efek: inv.salinan -1, flag surat_selesai, akrab.rw +2, mood +3
+
+== rw_surat_blm
+bicara: Pak RW
+teks: Belum ada salinan KTP dan KK-nya? Fotokopinya di dekat sini, buka sampai jam delapan malam. Tapi saya sendiri tutup jam tiga, ya.
+
+== rw_catatan
+bicara: Pak RW
+teks: Catatan warga, ya… ini bagus. Tapi formatnya bukan format laporan kecamatan. Nanti saya lampirkan sebagai 'masukan warga', ya. Terima kasih sudah mau mendengarkan orang-orang.
+efek: flag catatan_diserahkan, akrab.rw +1, mood +2
+
+== rw_jam
+bicara: Pak RW
+teks: Jam itu ketentuan dari kecamatan, bukan dari saya. Tapi akan saya sampaikan sebagai usulan. Belum tentu berubah, tapi lebih baik disampaikan daripada dipendam.
+efek: flag rw_pertanyaan_rani, akrab.rw +1

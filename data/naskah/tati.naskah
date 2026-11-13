@@ -1,0 +1,45 @@
+# BU TATI — pemilik Warteg di Lapangan RW 05
+# "hub" = menu obrolan yang muncul saat Dimas menyapa. Panduan: PANDUAN.md
+
+== hub
+bicara: Bu Tati
+teks: Mangga, {nama}. Sarapan dulu? | jika jam<11
+teks: Siang, {nama}. Nasinya masih hangat. | jika jam<16
+teks: Sore, Nak. Lauk tinggal yang itu-itu, tapi enak.
+pilihan:
+- Pesan makanan -> aksi menu_tati
+- Kasbon dulu ya, Bu… (utang Rp7.000) -> tati_kasbon | jika uang<9000, utang<=0, akrab.tati>=1
+- Bayar utang ({utang}) -> aksi bayar_utang | jika utang>0
+- Ada yang bisa dibantu, Bu? -> tati_bantu | jika hari>=3, !flag bantu_tati, jam<16
+- Soal Program Kampung Nyaman, Bu… -> tati_program | jika flag program_launch, !flag testimoni_tati
+- Cuma mampir, Bu.
+
+== tati_kasbon
+bicara: Bu Tati
+teks: Yah… sekali ini ya, {nama}. Tapi dicatat. Jangan jadi kebiasaan. Ibu juga punya utang ke pemasok.
+efek: kenyang +40, energi +6, utang +7000, waktu 15, akrab.tati +1
+
+== tati_bantu
+bicara: Bu Tati
+teks: Kebetulan, {nama}. Ibu mau ke pasar beli cabai dan telur, tapi pinggang lagi nggak enak. Bantu angkat belanjaan, ya? Nanti Ibu kasih uang capek.
+pilihan:
+- Siap, Bu. -> tati_bantu2
+- Nanti ya, Bu.
+
+== tati_bantu2
+teks: Pasar pagi itu ramai. Cabai naik, telur naik, tomat entah kenapa tetap sama. Pedagang bilang naiknya 'dari sananya'. Entah sananya di mana.
+efek: waktu 90, energi -12, uang +15000, akrab.tati +2, flag bantu_tati, hitung.bantu +1
+
+== tati_program
+bicara: {nama}
+teks: Bu, boleh nanya soal Program Kampung Nyaman? Menurut Ibu gimana?
+lanjut: tati_program2
+
+== tati_program2
+bicara: Bu Tati
+teks: Spanduknya bagus, jalannya mulus. Tapi biaya dapur Ibu nggak ikut turun: telur, gas, cabai. Ibu harus tahan harga supaya langganan nggak kabur. Kalau ada program yang bantu pedagang kecil, Ibu belum dengar.
+efek: flag testimoni_tati, mood +1
+lanjut: tati_program3
+
+== tati_program3
+teks: Dimas mencatat di ponselnya: 'Bu Tati — biaya operasional naik, belum ada bantuan untuk pedagang kecil.'

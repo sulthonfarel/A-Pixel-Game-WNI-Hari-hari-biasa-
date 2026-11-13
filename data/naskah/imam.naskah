@@ -1,0 +1,16 @@
+# CAK IMAM — penjaga Warung Madura di malam hari (siang: Kang Asep, lihat asep.naskah)
+
+== hub
+bicara: Cak Imam
+teks: Pagi, Mas. Belanja apa? | jika jam<11
+teks: Siang, Mas. Panas ya. | jika jam<16
+teks: Malam, Mas. Mau belanja apa? Warung ini buka terus; yang tutup cuma kalau saya ngantuk.
+pilihan:
+- Belanja -> aksi menu_imam
+- Kok buka terus, Cak? -> imam_24jam
+- Cuma lihat-lihat.
+
+== imam_24jam
+bicara: Cak Imam
+teks: Buka 24 jam itu bukan karena kami nggak butuh tidur, Mas. Tapi jam dua pagi pasti ada yang butuh mi instan, obat sakit kepala, atau cuma butuh orang untuk diajak ngobrol. Pelanggan malam itu jujur: nggak ada yang pura-pura kuat.
+efek: mood +2

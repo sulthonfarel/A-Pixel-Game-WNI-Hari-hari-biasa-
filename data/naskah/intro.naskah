@@ -1,0 +1,18 @@
+# PEMBUKA GAME — dibaca satu per satu sebelum Dimas bisa bergerak.
+# {nama} = nama pemain, {uang} = saldo awal.
+
+== intro_1
+teks: Senin pagi di Gang Sukamaju. Hujan semalam masih menetes dari talang seng, dan kipas angin berputar dengan suara yang makin mirip pesawat tua.
+lanjut: intro_2
+
+== intro_2
+bicara: {nama}
+teks: Saldo… {uang}. Uang tinggal segini. Kalau beli ayam, besok makan apa? Kalau nggak beli ayam, hari ini makan apa?
+lanjut: intro_3
+
+== intro_3
+teks: Kiriman berikutnya baru masuk tanggal 14. Sewa kos jatuh tempo tanggal 20. Tugas pertama dikumpulkan Jumat. Dimas sudah punya rencana besar untuk semuanya. Sayangnya, rencana itu belum dimulai.
+lanjut: intro_4
+
+== intro_4
+teks: (WASD / panah: jalan • E: berinteraksi • Tab: ponsel • Enter / Spasi: memilih. Mulailah dari meja belajar… atau kasur. Terserah.)

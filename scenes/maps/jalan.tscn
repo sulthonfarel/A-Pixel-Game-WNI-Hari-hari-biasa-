@@ -1,0 +1,122 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/location_view.gd" id="1_3c6fy"]
+[ext_resource type="Texture2D" path="res://assets/jalan_raya.png" id="2_kf44y"]
+[ext_resource type="PackedScene" path="res://scenes/sections/player.tscn" id="3_cldui"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="4_dakwh"]
+[ext_resource type="Script" path="res://scripts/interact_marker.gd" id="5_7jy2w"]
+[ext_resource type="Script" path="res://scripts/interactable.gd" id="6_t560v"]
+[ext_resource type="Script" path="res://scripts/pintu.gd" id="7_7s5ap"]
+[ext_resource type="Script" path="res://scripts/tepi_lokasi.gd" id="8_e2a8n"]
+
+[node name="Jalan" type="Node2D" unique_id=38987006]
+script = ExtResource("1_3c6fy")
+loc_id = "jalan"
+nama = "Jalan Sukamaju"
+ukuran = Vector2(960, 270)
+y_min = 200.0
+y_max = 240.0
+x_max = 942.0
+tinggi_sprite = 75
+kecepatan_jalan = 1.05
+warna_lantai = Color(0.2901961, 0.3019608, 0.32156864, 1)
+warna_dinding = Color(0, 0, 0, 1)
+lalu_lintas = true
+jalur_pejalan = Vector2(246, 262)
+papan = [["FOTOKOPI & PRINT", 76, 62, 158, 10, "#2f5f8a", "#f0f4f8"], ["KOPI TEH MIRA", 276, 62, 158, 10, "#6a2a22", "#f8ecd8"]]
+jendela_lampu = [[184, 122, 24, 28], [220, 122, 24, 28], [320, 122, 24, 28], [358, 122, 24, 28]]
+lampu_x = PackedFloat32Array(60, 260, 460, 660, 860)
+
+[node name="Latar" type="Sprite2D" parent="." unique_id=190574500]
+show_behind_parent = true
+scale = Vector2(0.23255815, 0.26367188)
+texture = ExtResource("2_kf44y")
+centered = false
+
+[node name="Entities" type="Node2D" parent="." unique_id=701933537]
+y_sort_enabled = true
+
+[node name="PlayerPratinjau" type="Node2D" parent="Entities" unique_id=423959619 groups=["preview_editor"] instance=ExtResource("3_cldui")]
+position = Vector2(44, 222)
+script = ExtResource("4_dakwh")
+editor_preview_sprite_height = 75
+
+[node name="InteractMarker" type="Node2D" parent="." unique_id=1274675318]
+script = ExtResource("5_7jy2w")
+
+[node name="Spawns" type="Node2D" parent="." unique_id=1561702588]
+
+[node name="kiri" type="Marker2D" parent="Spawns" unique_id=1205793542]
+position = Vector2(44, 222)
+
+[node name="fotokopi" type="Marker2D" parent="Spawns" unique_id=1179241383]
+position = Vector2(355, 222)
+
+[node name="kopi" type="Marker2D" parent="Spawns" unique_id=1326433102]
+position = Vector2(250, 222)
+
+[node name="halte" type="Marker2D" parent="Spawns" unique_id=1058013892]
+position = Vector2(560, 226)
+
+[node name="Objek" type="Node2D" parent="." unique_id=1888829175]
+
+[node name="b_foto" type="Node2D" parent="Objek" unique_id=555429657]
+position = Vector2(304, 82)
+script = ExtResource("6_t560v")
+size = Vector2(124, 116)
+solid = true
+warna = Color(0.3529412, 0.49803922, 0.65882355, 1)
+
+[node name="b_kopi" type="Node2D" parent="Objek" unique_id=220400043]
+position = Vector2(166, 82)
+script = ExtResource("6_t560v")
+size = Vector2(138, 116)
+solid = true
+warna = Color(0.6039216, 0.41960785, 0.2901961, 1)
+
+[node name="halte" type="Node2D" parent="Objek" unique_id=1017684296]
+position = Vector2(500, 168)
+script = ExtResource("6_t560v")
+label = "Halte angkot & pangkalan ojol"
+size = Vector2(118, 40)
+
+[node name="gerobak_ujang" type="Node2D" parent="Objek" unique_id=2063710373]
+position = Vector2(660, 172)
+script = ExtResource("6_t560v")
+label = "Gerobak batagor Mang Ujang"
+size = Vector2(64, 40)
+
+[node name="jalan_tutup" type="Node2D" parent="Objek" unique_id=1471552715]
+position = Vector2(760, 234)
+script = ExtResource("6_t560v")
+size = Vector2(100, 26)
+solid = true
+syarat_flag = "jalan_ditutup"
+warna = Color(0.8784314, 0.627451, 0.1882353, 1)
+
+[node name="Pintu" type="Node2D" parent="." unique_id=415308042]
+
+[node name="d_foto" type="Node2D" parent="Pintu" unique_id=350078292]
+position = Vector2(338, 178)
+script = ExtResource("7_7s5ap")
+ke = "fotokopi"
+spawn = "masuk"
+nama_tujuan = "Fotokopi & Print"
+size = Vector2(40, 48)
+
+[node name="d_kopi" type="Node2D" parent="Pintu" unique_id=1334037241]
+position = Vector2(232, 178)
+script = ExtResource("7_7s5ap")
+ke = "kopi_mira"
+spawn = "masuk"
+nama_tujuan = "Kopi Teh Mira"
+size = Vector2(40, 48)
+
+[node name="Tepi" type="Node2D" parent="." unique_id=1868547555]
+
+[node name="TepiKiri" type="Marker2D" parent="Tepi" unique_id=1780183438]
+script = ExtResource("8_e2a8n")
+arah = "kiri"
+ke = "lapangan"
+spawn = "kanan"
+label = "← Kembali ke Lapangan RW 05"

@@ -1,0 +1,143 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/location_view.gd" id="1_5l2mq"]
+[ext_resource type="Texture2D" path="res://assets/koridor_bg.png" id="2_d6sbx"]
+[ext_resource type="PackedScene" path="res://scenes/sections/player.tscn" id="3_41cc8"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="4_36uh2"]
+[ext_resource type="Script" path="res://scripts/interact_marker.gd" id="5_kdmy8"]
+[ext_resource type="Script" path="res://scripts/fence_layer.gd" id="6_33680"]
+[ext_resource type="Script" path="res://scripts/interactable.gd" id="7_wl37s"]
+[ext_resource type="Script" path="res://scripts/pintu.gd" id="8_focpt"]
+
+[node name="Koridor" type="Node2D" unique_id=1396374323]
+script = ExtResource("1_5l2mq")
+loc_id = "koridor"
+nama = "Koridor Kos (Lantai 2)"
+ukuran = Vector2(480, 270)
+y_min = 200.0
+y_max = 255.0
+x_max = 420.0
+tinggi_sprite = 100
+kecepatan_jalan = 1.2
+warna_lantai = Color(0.47058824, 0.39607844, 0.3529412, 1)
+warna_dinding = Color(0.41960785, 0.3137255, 0.2509804, 1)
+jalur_pejalan = Vector2(246, 262)
+lampu_x = PackedFloat32Array()
+
+[node name="Latar" type="Sprite2D" parent="." unique_id=1849207238]
+show_behind_parent = true
+texture = ExtResource("2_d6sbx")
+centered = false
+
+[node name="Entities" type="Node2D" parent="." unique_id=469350337]
+y_sort_enabled = true
+
+[node name="PlayerPratinjau" type="Node2D" parent="Entities" unique_id=578671282 groups=["preview_editor"] instance=ExtResource("3_41cc8")]
+position = Vector2(135, 248)
+script = ExtResource("4_36uh2")
+
+[node name="InteractMarker" type="Node2D" parent="." unique_id=1480703055]
+script = ExtResource("5_kdmy8")
+
+[node name="Pagar" type="Node2D" parent="." unique_id=2076261109]
+z_index = 20
+script = ExtResource("6_33680")
+area = PackedInt32Array(0, 423, 224, 259)
+
+[node name="Spawns" type="Node2D" parent="." unique_id=1273783771]
+
+[node name="kamar" type="Marker2D" parent="Spawns" unique_id=2059536078]
+position = Vector2(135, 248)
+
+[node name="tangga" type="Marker2D" parent="Spawns" unique_id=484409929]
+position = Vector2(405, 248)
+
+[node name="Objek" type="Node2D" parent="." unique_id=109589491]
+
+[node name="pintu1" type="Node2D" parent="Objek" unique_id=961120226]
+position = Vector2(17, 164)
+script = ExtResource("7_wl37s")
+label = "Pintu kamar 1"
+size = Vector2(40, 78)
+
+[node name="pintu3" type="Node2D" parent="Objek" unique_id=1130876326]
+position = Vector2(196, 164)
+script = ExtResource("7_wl37s")
+label = "Pintu kamar 3"
+size = Vector2(41, 78)
+
+[node name="pintu4" type="Node2D" parent="Objek" unique_id=985949804]
+position = Vector2(278, 164)
+script = ExtResource("7_wl37s")
+label = "Pintu kamar 4"
+size = Vector2(41, 78)
+
+[node name="pintu5" type="Node2D" parent="Objek" unique_id=97238973]
+position = Vector2(361, 164)
+script = ExtResource("7_wl37s")
+label = "Pintu kamar 5"
+size = Vector2(41, 78)
+
+[node name="rak1" type="Node2D" parent="Objek" unique_id=351063093]
+position = Vector2(60, 218)
+script = ExtResource("7_wl37s")
+label = "Rak sepatu"
+size = Vector2(35, 28)
+
+[node name="rak2" type="Node2D" parent="Objek" unique_id=1883615431]
+position = Vector2(325, 218)
+script = ExtResource("7_wl37s")
+label = "Rak sepatu"
+size = Vector2(34, 28)
+
+[node name="sampah1" type="Node2D" parent="Objek" unique_id=1034070038]
+position = Vector2(97, 227)
+script = ExtResource("7_wl37s")
+label = "Tempat sampah"
+size = Vector2(14, 20)
+
+[node name="sampah2" type="Node2D" parent="Objek" unique_id=525667381]
+position = Vector2(160, 230)
+script = ExtResource("7_wl37s")
+label = "Tempat sampah"
+size = Vector2(13, 18)
+
+[node name="tanaman" type="Node2D" parent="Objek" unique_id=791903614]
+position = Vector2(172, 203)
+script = ExtResource("7_wl37s")
+label = "Tanaman besar"
+size = Vector2(23, 44)
+
+[node name="meteran" type="Node2D" parent="Objek" unique_id=549690043]
+position = Vector2(82, 165)
+script = ExtResource("7_wl37s")
+label = "Meteran listrik"
+size = Vector2(24, 20)
+
+[node name="jemuran" type="Node2D" parent="Objek" unique_id=931889154]
+position = Vector2(4, 222)
+script = ExtResource("7_wl37s")
+label = "Jemuran"
+size = Vector2(24, 22)
+
+[node name="Pintu" type="Node2D" parent="." unique_id=1765559974]
+
+[node name="p_kamar" type="Node2D" parent="Pintu" unique_id=1785749386]
+position = Vector2(114, 164)
+script = ExtResource("8_focpt")
+ke = "kos_room"
+spawn = "masuk"
+nama_tujuan = "Kamar kosmu"
+label = "Masuk kamar kosmu"
+size = Vector2(41, 78)
+
+[node name="p_tangga" type="Node2D" parent="Pintu" unique_id=317467739]
+position = Vector2(404, 206)
+script = ExtResource("8_focpt")
+ke = "gang"
+spawn = "kos"
+nama_tujuan = "Gang Sukamaju"
+label = "Turun tangga ke Gang Sukamaju"
+size = Vector2(34, 50)
+
+[node name="Tepi" type="Node2D" parent="." unique_id=1429050835]

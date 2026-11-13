@@ -1,0 +1,90 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/location_view.gd" id="1_3cqlm"]
+[ext_resource type="Texture2D" path="res://assets/masjid_bg.png" id="2_yo1fu"]
+[ext_resource type="PackedScene" path="res://scenes/sections/player.tscn" id="3_pjope"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="4_e3sqj"]
+[ext_resource type="Script" path="res://scripts/interact_marker.gd" id="5_l1s7n"]
+[ext_resource type="Script" path="res://scripts/interactable.gd" id="6_ya4li"]
+[ext_resource type="Script" path="res://scripts/pintu.gd" id="7_7uki2"]
+
+[node name="Masjid" type="Node2D" unique_id=2127373749]
+script = ExtResource("1_3cqlm")
+loc_id = "masjid"
+nama = "Masjid Al-Ikhlas"
+ukuran = Vector2(480, 270)
+dalam_ruangan = true
+y_min = 222.0
+y_max = 262.0
+tinggi_sprite = 62
+kecepatan_jalan = 1.1
+warna_lantai = Color(0.27450982, 0.4392157, 0.3529412, 1)
+warna_dinding = Color(0.8862745, 0.84705883, 0.7529412, 1)
+jalur_pejalan = Vector2(246, 262)
+lampu_x = PackedFloat32Array()
+
+[node name="Latar" type="Sprite2D" parent="." unique_id=486003793]
+show_behind_parent = true
+texture = ExtResource("2_yo1fu")
+centered = false
+
+[node name="Entities" type="Node2D" parent="." unique_id=683216316]
+y_sort_enabled = true
+
+[node name="PlayerPratinjau" type="Node2D" parent="Entities" unique_id=1236281858 groups=["preview_editor"] instance=ExtResource("3_pjope")]
+position = Vector2(420, 236)
+script = ExtResource("4_e3sqj")
+editor_preview_sprite_height = 62
+
+[node name="InteractMarker" type="Node2D" parent="." unique_id=1448219779]
+script = ExtResource("5_l1s7n")
+
+[node name="Spawns" type="Node2D" parent="." unique_id=1614710677]
+
+[node name="masuk" type="Marker2D" parent="Spawns" unique_id=2129654508]
+position = Vector2(420, 236)
+
+[node name="Objek" type="Node2D" parent="." unique_id=2077162166]
+
+[node name="sajadah" type="Node2D" parent="Objek" unique_id=1215202044]
+position = Vector2(150, 226)
+script = ExtResource("6_ya4li")
+label = "Sajadah (salat)"
+size = Vector2(180, 34)
+
+[node name="rak_quran" type="Node2D" parent="Objek" unique_id=540321472]
+position = Vector2(360, 150)
+script = ExtResource("6_ya4li")
+label = "Rak Al-Qur'an & buku"
+size = Vector2(58, 70)
+
+[node name="kotak_amal" type="Node2D" parent="Objek" unique_id=2025728820]
+position = Vector2(428, 176)
+script = ExtResource("6_ya4li")
+label = "Kotak amal"
+size = Vector2(26, 46)
+
+[node name="bedug" type="Node2D" parent="Objek" unique_id=872137674]
+position = Vector2(88, 166)
+script = ExtResource("6_ya4li")
+label = "Bedug"
+size = Vector2(52, 56)
+
+[node name="mimbar" type="Node2D" parent="Objek" unique_id=1286568657]
+position = Vector2(304, 100)
+script = ExtResource("6_ya4li")
+label = "Mimbar"
+size = Vector2(52, 120)
+
+[node name="Pintu" type="Node2D" parent="." unique_id=299802753]
+
+[node name="p_keluar" type="Node2D" parent="Pintu" unique_id=1801705801]
+position = Vector2(450, 122)
+script = ExtResource("7_7uki2")
+ke = "gang"
+spawn = "masjid"
+nama_tujuan = "Gang Sukamaju"
+label = "Keluar ke gang"
+size = Vector2(30, 100)
+
+[node name="Tepi" type="Node2D" parent="." unique_id=863577316]

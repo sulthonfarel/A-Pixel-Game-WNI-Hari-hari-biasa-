@@ -1,0 +1,41 @@
+# PAK USTAZ HILMAN — imam Masjid Al-Ikhlas; Jumat Berkah
+
+== hub
+bicara: Pak Ustaz Hilman
+teks: Assalamu'alaikum, {nama}. Pagi yang baik. | jika jam<11
+teks: Wa'alaikumsalam, {nama}. Sudah makan siang? | jika jam<16
+teks: Sore, Nak. Sebentar lagi Magrib.
+pilihan:
+- Saya ikut salat berjamaah, Pak Ustaz. -> aksi salat_masjid | jika salat_aktif
+- Tanya jadwal salat & Jumat Berkah -> ustaz_info
+# menit 735 = 12.15, 810 = 13.30 (jendela membantu Jumat Berkah). Satu kali per hari Jumat.
+- Boleh saya bantu membagikan nasi? -> ustaz_bantu | jika jumat, menit>=735, menit<810, !flag ustaz_bantu_d{hari}
+- Pak Ustaz, soal Program Kampung Nyaman… -> ustaz_program | jika flag program_launch, hari>=15, !flag testimoni_ustaz
+- Permisi, Pak Ustaz.
+
+== ustaz_info
+bicara: Pak Ustaz Hilman
+teks: Adzan Zuhur sekitar jam sebelas lewat empat puluh lima, Ashar jam tiga, Magrib jam enam, Isya jam tujuh lewat seperempat. Hari Jumat, jumatan jam sebelas empat puluh lima. Setelahnya ada Jumat Berkah di depan masjid, kira-kira setengah satu. Kadang cepat habis, jadi jangan terlalu santai.
+
+== ustaz_bantu
+bicara: {nama}
+teks: Pak Ustaz, boleh saya bantu membagikan nasinya?
+lanjut: ustaz_bantu2
+
+== ustaz_bantu2
+bicara: Pak Ustaz Hilman
+teks: Alhamdulillah. Silakan, Nak. Satu per satu ya, jangan lupa senyum. Itu lauknya juga.
+efek: flag ustaz_bantu_d{hari}, waktu 40, energi -6, mood +5, kenyang +30, akrab.ustaz +2, hitung.bantu +1
+lanjut: ustaz_bantu3
+
+== ustaz_bantu3
+teks: Barisan mengular dari depan masjid sampai tiang listrik. Ada bapak ojol, ibu-ibu pulang pasar, dan seorang mahasiswa yang berpura-pura baru lewat. Pak Ustaz menyisihkan sebungkus untuk Dimas tanpa berkata apa-apa.
+
+== ustaz_program
+bicara: Pak Ustaz Hilman
+teks: Programnya baik, Nak. Tapi jamaah sepuh kami sulit lewat jalan yang ditutup waktu Jumatan, dan kabar program jarang sampai ke mereka. Mereka tahunya dari pengajian. Lampu jalan baru membantu sekali untuk jamaah Isya. Kalau boleh usul, pengumuman ditempel juga di masjid.
+efek: flag testimoni_ustaz, mood +1
+lanjut: ustaz_program2
+
+== ustaz_program2
+teks: Dimas mencatat: 'Pak Ustaz — jamaah lansia sulit lewat jalan tutup; kabar program jarang sampai ke mereka.'

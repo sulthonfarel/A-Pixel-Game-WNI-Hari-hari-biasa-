@@ -1,0 +1,6 @@
+# PELANGGAN (pelanggan1 & pelanggan2) — figuran yang ikut membahas berita terbaru.
+# {warga} diganti otomatis dengan salah satu kalimat "warga:" dari berita terakhir (lihat berita.naskah).
+
+== hub
+bicara: Pelanggan
+teks: {warga}

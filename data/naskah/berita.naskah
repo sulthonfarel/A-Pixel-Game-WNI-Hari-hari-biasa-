@@ -1,0 +1,257 @@
+# BERITA & KEJADIAN HARIAN
+# Tiap simpul "== id" adalah satu berita yang muncul di pagi hari pada "hari:" yang ditentukan.
+# Kunci: hari, tipe, judul, isi, efek, kata.<tokoh> (komentar tokoh), warga (daftar kalimat orang lewat).
+# Efek memakai tata bahasa yang sama dengan dialog; tambahan khusus berita: harga.<barang> x1.3 dan habis.<barang> 2.
+# Panduan lengkap: data/naskah/PANDUAN.md
+
+== rute_angkot
+hari: 2
+tipe: berita
+judul: Trayek angkot dialihkan
+isi: Dinas Perhubungan mengumumkan trayek angkot Cibiru–Ujungberung dialihkan 'sementara'. Berapa lama sementaranya? Informasi menyusul.
+efek: harga.transport x1.2, flag rute_angkot
+kata.tati: Anak-anak kuliah jadi telat makan siang. Angkotnya muter jauh sekarang, Nak.
+kata.asep: Sopir angkot langganan saya bilang trayeknya diubah. 'Sementara', katanya. Sementara-nya berapa lama, nggak ada yang tahu.
+kata.fikri: Angkot muter, orang pindah ke ojol. Rezeki sih, tapi macetnya nambah.
+kata.mira: Perhatiin deh, yang ngeluh itu yang biasa naik angkot. Yang naik motor ya biasa aja.
+kata.rani: Aku berangkat setengah jam lebih awal sekarang. Dosen nggak mau tahu soal trayek.
+kata.rw: Itu wewenang dinas, bukan kami. Kami hanya meneruskan pengumumannya ke warga.
+warga:
+- Lho, trayeknya diubah? Saya naik yang itu sudah dua puluh tahun!
+- Ya bagus, jadi nggak ngetem lama di depan gang.
+
+== harga_telur
+hari: 3
+tipe: berita
+judul: Harga telur ayam naik
+isi: Harga telur di pasar naik. Pedagang bilang pasokan berkurang, peternak bilang pakan mahal. Konsumen bilang: 'Jadi siapa yang salah?'
+efek: harga.telur x1.3
+kata.tati: Telur naik, tapi orang tetap minta dadar. Masa Ibu potong jadi dua, Nak?
+kata.asep: Telur di sini juga naik. Saya juga beli dari pasar, jadi ya ikut.
+kata.mira: Pelanggan sekarang banyak pesan kopi tanpa gorengan. Kelihatan dari dompetnya.
+kata.darto: Anak kos jadi sering masak mi di kamar. Kompor listriknya nyala terus!
+warga:
+- Telur naik lagi! Padahal baru kemarin harganya normal.
+- Ganti lauk tempe saja, lebih murah dan sama enaknya.
+
+== hoax_beras
+hari: 4
+tipe: berita
+judul: Beredar pesan berantai: 'Beras akan langka minggu depan'
+isi: Sebuah pesan berantai menyebut stok beras habis dalam seminggu. Sumbernya tidak jelas, tapi banyak yang membagikannya 'untuk jaga-jaga'. Sejumlah warung kehabisan mi instan.
+efek: habis.mi_instan 2, flag hoax_beras
+kata.asep: Katanya beras bakal langka! Tadi mi instan saya diborong, tinggal rak kosong.
+kata.tati: Ibu lihat pesan itu juga. Kata Bu RT belum ada pengumuman resmi. Tapi orang kan takut.
+kata.rani: Itu gambar lama yang tanggalnya diedit. Aku sudah cek. Tapi grup keluargaku sudah panik duluan.
+kata.fikri: Penumpang tiba-tiba minta mampir ke minimarket. Ya sudah, aku ikut nungguin.
+kata.mira: TV nggak nyebut apa-apa soal itu. Tapi pelanggan sudah ribut.
+warga:
+- Saya sudah beli beras dua karung. Jaga-jaga saja.
+- Kok orang gampang percaya, ya? Itu cuma forward-an.
+
+== bbm_naik
+hari: 5
+tipe: berita
+judul: Harga BBM naik
+isi: Pemerintah mengumumkan penyesuaian harga bahan bakar mulai pukul 00.00. 'Bertahap dan terukur', demikian pernyataan resminya. Antrean SPBU memanjang sejak malam.
+efek: harga.bbm x1.25, harga.ayam x1.05, harga.sayur x1.05
+kata.fikri: Bensin naik. Orderan nggak ikut naik. Ongkos penumpang naik sedikit, tapi nggak ngejar.
+kata.tati: Harga ayam ikut naik, katanya ongkos angkut. Jadi ya Ibu naikin seribu dua ribu.
+kata.asep: Bensin naik, truk distributor ikut. Barang datang telat, harga nyusul.
+kata.ujang: Gas elpiji ikut-ikutan naik. Kuah cuanki saya hemat-hemat, tapi rasanya jangan.
+kata.mira: Pelanggan ojol makin sering mampir. Bukan karena kopinya, tapi nunggu orderan sambil hemat bensin.
+kata.rw: Itu keputusan pusat. Tugas kami meneruskan imbauan hemat energi.
+kata.ustaz: Harga naik, sedekah jangan ikut turun. Alhamdulillah donatur Jumat Berkah masih setia.
+kata.imam: Bensin naik, kulakan naik. Warung ini buka 24 jam, tapi dompet pelanggan tidak.
+kata.rani: Ongkos ojol naik. Sekarang tiap mau ke kampus aku ngitung: kopi atau ongkos?
+warga:
+- Sudah saatnya beralih ke angkot.
+- Angkot juga beli bensin, lho. Nanti ongkosnya ikut naik.
+
+== peluncuran_program
+hari: 6
+tipe: berita
+judul: Peluncuran Program Kampung Nyaman
+isi: Acara peluncuran digelar di Gang Sukamaju pukul 09.00. Spanduk dipasang, sambutan dibacakan, nasi kotak dibagikan. Program menjanjikan fasilitas, layanan administrasi, dan 'kampung yang lebih nyaman bagi semua'.
+efek: flag program_launch spanduk, timed.nasi_kotak_hari 6
+kata.rw: Alhamdulillah acaranya lancar. Ada 12 kegiatan yang dijadwalkan. Laporannya sudah saya siapkan.
+kata.tati: Spanduknya bagus. Ibu cuma berharap harga gas ikut dipikirkan.
+kata.asep: Ramai banget tadi! Orang banyak jalan kaki ke sini, lumayan dagangan saya laku.
+kata.mira: Nasi kotaknya enak. Tapi antrenya lebih panjang dari antre ojol waktu hujan.
+kata.fikri: Aku nggak ikut acara, lagi narik. Katanya ada tenda baru.
+kata.darto: Mudah-mudahan lampu jalan beneran dipasang, bukan cuma janji.
+kata.ustaz: Semoga program ini juga sampai ke jamaah yang sepuh. Mereka jarang kebagian kabar.
+kata.rani: Aku cuma lihat spanduknya. Ada tulisan 'layanan administrasi'. Penasaran sih.
+warga:
+- Akhirnya ada yang peduli sama kampung kita.
+- Janji sih banyak. Kita lihat bulan depan.
+
+== papan_info
+hari: 8
+tipe: berita
+judul: Papan informasi program dipasang
+isi: Papan informasi di dekat Balai RW menampilkan daftar kegiatan dan capaian program. Warga dapat melihat progres setiap hari.
+efek: flag papan_info
+kata.rw: Papan itu supaya transparan. Setiap kegiatan selesai, angkanya saya perbarui.
+kata.mira: Papannya bagus. Cuma tulisannya kecil, orang harus nyipit.
+warga:
+- Bagus ada papan, jadi tahu kegiatannya apa saja.
+- Angkanya naik terus, tapi got depan rumah saya masih mampet.
+
+== jalan_ditutup
+hari: 9
+tipe: berita
+judul: Perbaikan jalan gang utama dimulai
+isi: Sebagian jalan menuju halte ditutup untuk perbaikan aspal hingga hari Jumat. Pengendara diminta memutar lewat jalur alternatif.
+efek: timed.jalan_ditutup 12
+kata.fikri: Jalan ditutup, aku muter lewat gang kecil. Jarak nambah, bensin nambah, penumpang nunggu lebih lama.
+kata.asep: Truk pasokan susah masuk. Barang saya telat dua hari.
+kata.ustaz: Jamaah lansia jadi susah lewat jalan itu waktu Jumatan. Pelan-pelan saja, Pak, Bu.
+kata.mira: Motor jadi sering lewat depan warung. Pelanggan nambah, bising juga nambah.
+kata.tati: Pelanggan Ibu yang biasa lewat jalan itu jadi jarang mampir. Tapi yang dari arah lain malah nambah.
+kata.rw: Ini bagian dari program. Mohon bersabar, nanti jalannya lebih mulus.
+kata.rani: Aku lewat jalan memutar ke halte. Sepuluh menit lebih lama, tapi ya sudah.
+warga:
+- Akhirnya aspalnya diperbaiki! Bertahun-tahun bolong.
+- Perbaikan sih bagus, tapi kenapa pas musim hujan?
+
+== laptop_lemot
+hari: 10
+tipe: pribadi
+judul: Laptop melambat
+isi: Entah kenapa laptop jadi lemot. Mungkin karena 47 tab yang terbuka. Mungkin juga karena kenyataan. (Mengerjakan tugas di kamar jadi lebih lama selama beberapa hari.)
+efek: timed.laptop_lemot 12
+
+== pos_layanan
+hari: 11
+tipe: berita
+judul: Pos layanan administrasi dibuka
+isi: Pos layanan Program Kampung Nyaman buka Senin–Kamis pukul 09.00–12.00 untuk pengurusan surat dan dokumen warga. Pendaftaran bisa online; berkas fisik tetap perlu dibawa.
+efek: flag pos_layanan
+kata.rw: Pos layanan itu inovasi. Warga tidak perlu jauh-jauh ke kelurahan.
+kata.rani: Jam bukanya bentrok sama kuliahku. Dan kerjaku. Ya sudahlah...
+kata.mira: Banyak yang nanya ke sini jam bukanya. Padahal pengumumannya cuma ditempel di dalam.
+kata.tati: Ibu belum sempat. Jam segitu warung lagi ramai.
+kata.asep: Anak saya dulu ngurus surat sampai tiga kali bolak-balik. Semoga sekarang lebih gampang.
+warga:
+- Wah, enak ya, urus surat tinggal jalan kaki.
+- Jam sembilan sampai dua belas? Saya kerja jam segitu.
+
+== jalan_dibuka
+hari: 13
+tipe: berita
+judul: Jalan gang utama kembali dibuka
+isi: Perbaikan aspal selesai lebih cepat dari jadwal. Jalan kembali bisa dilewati, meski marka belum dicat.
+kata.fikri: Sudah dibuka. Mulus sih. Tapi tiga hari kemarin sudah kepotong rezeki.
+kata.mira: Motor jadi makin ngebut. Jalannya halus, orang pada gas.
+kata.asep: Truk sudah masuk lagi. Rak saya aman.
+kata.rw: Satu kegiatan selesai lagi. Angkanya saya catat.
+warga:
+- Mulus banget! Berasa naik karpet.
+- Marka jalannya belum ada, hati-hati.
+
+== uang_kiriman
+hari: 14
+tipe: pribadi
+judul: Uang kiriman masuk
+isi: Ibu: 'Dimas, uang sudah Ibu kirim ya. Jangan lupa makan yang bener. Jangan mi terus. Ibu bangga sama kamu.' (+Rp500.000)
+efek: uang +500000, mood +10
+
+== lampu_jalan
+hari: 15
+tipe: berita
+judul: Lampu jalan baru menyala
+isi: Empat titik lampu jalan LED dipasang di sepanjang gang. Warga mengaku malam lebih terang, meski beberapa lampu masih berkedip.
+efek: flag lampu_jalan
+kata.mira: Malam jadi terang, orang betah nongkrong lebih lama.
+kata.fikri: Narik malam jadi lebih tenang. Ini bagus, jujur.
+kata.ustaz: Jamaah Isya sekarang pulang tidak meraba-raba. Alhamdulillah.
+kata.darto: Akhirnya! Tapi tagihan listrik penerangan itu entah siapa yang bayar.
+kata.tati: Lampunya terang. Dagangan malam Ibu agak lebih ramai.
+kata.rw: Satu lagi kegiatan yang selesai.
+warga:
+- Terang! Anak-anak jadi aman pulang malam.
+- Lampu di depan rumah saya kedip-kedip kayak disko.
+
+== harga_cabai
+hari: 17
+tipe: berita
+judul: Harga cabai melonjak
+isi: Cabai rawit naik hampir dua kali lipat karena cuaca. Pedagang pasar berharap ini sementara. (Kata 'sementara' kembali dipakai.)
+efek: harga.sayur x1.2
+kata.tati: Cabai naik, sambal Ibu jadi dikurangi. Maaf ya, nanti ada yang protes.
+kata.asep: Cabai rawit saya jual lebih mahal tapi tetap laku. Orang butuh pedas.
+kata.ujang: Cabai naik, seblak ikut naik. Pelanggan protes: 'Kok kurang pedas, Mang?' Saya jawab: 'Cabainya juga lagi tersinggung.'
+kata.mira: Seblak jadi mahal. Anak kos pada sedih.
+warga:
+- Cabai segenggam, harganya segenggam juga.
+- Sambalnya kok kurang pedas, Bu?
+
+== laporan_rw
+hari: 18
+tipe: berita
+judul: Pak RW menyiapkan laporan program
+isi: Pak RW menyampaikan bahwa laporan kemajuan program akan dikirim ke kecamatan. Laporan memuat jumlah kegiatan yang selesai dan dokumentasi.
+efek: flag laporan_rw
+kata.rw: Kecamatan minta angka: berapa kegiatan selesai, berapa warga hadir. Itu yang dilihat.
+
+== sewa_ingat
+hari: 20
+tipe: pribadi
+judul: Pengingat: sewa kos jatuh tempo
+isi: Pak Darto menitipkan pesan: sewa bulan ini Rp400.000 jatuh tempo hari ini. Toleransi sampai tanggal 25.
+efek: flag sewa_ingat
+kata.darto: Tanggal 20 ya. Saya nggak galak, tapi tagihan listrik juga nggak galak: dia cuma datang.
+
+== undangan_rapat
+hari: 22
+tipe: berita
+judul: Undangan rapat warga Program Kampung Nyaman
+isi: Rapat evaluasi diadakan Sabtu, hari ke-27, pukul 19.00 di Balai RW. Seluruh warga diharapkan hadir. Konsumsi disediakan.
+efek: flag undangan_rapat
+kata.rw: Tolong datang ya. Supaya rapat tidak hanya dihadiri yang itu-itu saja.
+kata.mira: Kalau ada konsumsi, pasti ramai. Tapi hari Sabtu itu ada bola juga, lho.
+kata.tati: Ibu mau datang. Ada yang mau Ibu tanyakan.
+warga:
+- Rapat lagi? Semoga kali ini ada yang didengar.
+- Asal ada nasi kotaknya, saya datang.
+
+== hari_rapat
+hari: 27
+tipe: pribadi
+judul: Hari ini: rapat warga pukul 19.00
+isi: Jangan lupa. Rapat evaluasi malam ini di Balai RW. Konsumsi disediakan, bola juga dimulai pukul 21.00. Pilihan yang sulit bagi sebagian warga.
+
+== jumat_berkah_5
+hari: 5
+tipe: pribadi
+judul: Hari ini Jumat Berkah
+isi: Usai salat Jumat, takmir Masjid Al-Ikhlas membagikan makanan gratis di depan masjid: nasi, ayam suwir, dan sambal. Siapa saja boleh ambil, selama persediaan masih ada (sekitar pukul 12.30–13.30).
+efek: timed.jumat_berkah_aktif 5
+
+== jumat_berkah_12
+hari: 12
+tipe: pribadi
+judul: Hari ini Jumat Berkah
+isi: Usai salat Jumat, takmir Masjid Al-Ikhlas membagikan makanan gratis di depan masjid: nasi, tempe orek, dan sayur asem. Siapa saja boleh ambil, selama persediaan masih ada (sekitar pukul 12.30–13.30).
+efek: timed.jumat_berkah_aktif 12
+
+== jumat_berkah_19
+hari: 19
+tipe: pribadi
+judul: Hari ini Jumat Berkah
+isi: Usai salat Jumat, takmir Masjid Al-Ikhlas membagikan makanan gratis di depan masjid: nasi dan telur balado. Siapa saja boleh ambil, selama persediaan masih ada (sekitar pukul 12.30–13.30).
+efek: timed.jumat_berkah_aktif 19
+
+== jumat_berkah_26
+hari: 26
+tipe: pribadi
+judul: Hari ini Jumat Berkah
+isi: Usai salat Jumat, takmir Masjid Al-Ikhlas membagikan makanan gratis di depan masjid: nasi, ikan asin, lalapan, dan kerupuk. Siapa saja boleh ambil, selama persediaan masih ada (sekitar pukul 12.30–13.30).
+efek: timed.jumat_berkah_aktif 26
+
+== hari_terakhir
+hari: 28
+tipe: pribadi
+judul: Hari terakhir bulan ini
+isi: Besok tanggal satu. Saldo, tugas, dan kenangan akan dihitung. Yang penting, kamu masih di sini.

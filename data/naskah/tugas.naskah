@@ -1,0 +1,22 @@
+# TUGAS KULIAH
+# Kunci: nama, mulai (hari tugas dibuka), tenggat (hari terakhir, semuanya hari Jumat).
+
+== t1
+nama: Makalah Pengantar Teknologi Informasi
+mulai: 1
+tenggat: 5
+
+== t2
+nama: Laporan Praktikum Algoritma
+mulai: 6
+tenggat: 12
+
+== t3
+nama: Proposal Proyek Kelompok
+mulai: 13
+tenggat: 19
+
+== t4
+nama: Portofolio Akhir Semester
+mulai: 20
+tenggat: 26

@@ -1,0 +1,31 @@
+# FIKRI — driver ojol; titip paket untuk Pak RW
+
+== hub
+bicara: Fikri
+teks: Pagi, Kang. Mau berangkat? Aku masih nunggu orderan. | jika jam<11
+teks: Eh, {nama}. Aku lagi istirahat sebentar. | jika jam<16
+teks: Sore, Kang. Lagi nunggu orderan malam.
+tambah: (Fikri: 'Kalau naik ojolku, buat langganan kukasih potongan seribu dua ribu.') | jika akrab.fikri>=3
+pilihan:
+- Ada yang bisa kubantu, Fik? -> fikri_paket | jika hari>=3, inv.paket=0, !flag paket_selesai, !flag paket_dibawa
+- Menurutmu Program Kampung Nyaman gimana, Fik? -> fikri_program | jika hari>=15, flag program_launch, !flag testimoni_fikri
+- Cuma nyapa.
+
+== fikri_paket
+bicara: Fikri
+teks: Eh Kang, ada paket buat Pak RW, tapi aku harus ngejar order jauh. Bisa titip? Nanti kutraktir kopi.
+pilihan:
+- Sini, aku antar. -> fikri_paket2 | efek inv.paket +1, flag paket_dibawa, akrab.fikri +1
+- Maaf, lagi buru-buru.
+
+== fikri_paket2
+teks: Paket kecil berlakban cokelat. Penerima: Pak RW, Balai RW. 'Jangan dibuka ya, Kang,' kata Fikri, setengah bercanda.
+
+== fikri_program
+bicara: Fikri
+teks: Penghasilanku tergantung narik. Waktu jalan ditutup, aku muter, bensin nambah, penumpang nunggu lebih lama. Orderan jauh nggak ketutup. Tapi lampu jalan baru bikin narik malam lebih tenang, itu jujur bagus.
+efek: flag testimoni_fikri, mood +1
+lanjut: fikri_program2
+
+== fikri_program2
+teks: Dimas mencatat: 'Fikri — penutupan jalan memotong penghasilan harian; lampu jalan membantu.'

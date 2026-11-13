@@ -1,0 +1,95 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/location_view.gd" id="1_73d0f"]
+[ext_resource type="PackedScene" path="res://scenes/sections/player.tscn" id="2_gyk2q"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="3_j3nis"]
+[ext_resource type="Script" path="res://scripts/interact_marker.gd" id="4_merws"]
+[ext_resource type="Script" path="res://scripts/interactable.gd" id="5_nsas7"]
+
+[node name="Kampus" type="Node2D" unique_id=359631764]
+script = ExtResource("1_73d0f")
+loc_id = "kampus"
+nama = "Kampus"
+y_min = 150.0
+tinggi_sprite = 62
+warna_lantai = Color(0.65882355, 0.7882353, 0.56078434, 1)
+warna_dinding = Color(0, 0, 0, 1)
+jalur_pejalan = Vector2(246, 262)
+lampu_x = PackedFloat32Array()
+
+[node name="Entities" type="Node2D" parent="." unique_id=43343095]
+y_sort_enabled = true
+
+[node name="PlayerPratinjau" type="Node2D" parent="Entities" unique_id=240561587 groups=["preview_editor"] instance=ExtResource("2_gyk2q")]
+position = Vector2(320, 300)
+script = ExtResource("3_j3nis")
+editor_preview_sprite_height = 62
+
+[node name="InteractMarker" type="Node2D" parent="." unique_id=151589279]
+script = ExtResource("4_merws")
+
+[node name="Spawns" type="Node2D" parent="." unique_id=1685778490]
+
+[node name="gerbang" type="Marker2D" parent="Spawns" unique_id=971185471]
+position = Vector2(320, 300)
+
+[node name="Objek" type="Node2D" parent="." unique_id=837593483]
+
+[node name="gedung" type="Node2D" parent="Objek" unique_id=11600596]
+position = Vector2(40, 16)
+script = ExtResource("5_nsas7")
+size = Vector2(330, 130)
+solid = true
+warna = Color(0.78039217, 0.7882353, 0.8509804, 1)
+teks = "Gedung Fakultas Teknik"
+
+[node name="kelas" type="Node2D" parent="Objek" unique_id=1165510055]
+position = Vector2(150, 146)
+script = ExtResource("5_nsas7")
+label = "Ruang kelas"
+size = Vector2(80, 26)
+solid = true
+warna = Color(0.49803922, 0.56078434, 0.65882355, 1)
+teks = "Ruang kelas"
+
+[node name="pohon1" type="Node2D" parent="Objek" unique_id=1641634108]
+position = Vector2(410, 30)
+script = ExtResource("5_nsas7")
+size = Vector2(40, 60)
+solid = true
+warna = Color(0.23137255, 0.47843137, 0.23137255, 1)
+
+[node name="pohon2" type="Node2D" parent="Objek" unique_id=1597815614]
+position = Vector2(570, 40)
+script = ExtResource("5_nsas7")
+size = Vector2(40, 60)
+solid = true
+warna = Color(0.23137255, 0.47843137, 0.23137255, 1)
+
+[node name="gazebo" type="Node2D" parent="Objek" unique_id=1717007700]
+position = Vector2(430, 110)
+script = ExtResource("5_nsas7")
+label = "Gazebo (belajar)"
+size = Vector2(120, 70)
+solid = true
+warna = Color(0.7607843, 0.56078434, 0.3529412, 1)
+teks = "Gazebo"
+
+[node name="bangku" type="Node2D" parent="Objek" unique_id=99041773]
+position = Vector2(90, 230)
+script = ExtResource("5_nsas7")
+size = Vector2(70, 20)
+solid = true
+warna = Color(0.6431373, 0.44313726, 0.28235295, 1)
+
+[node name="gerbang" type="Node2D" parent="Objek" unique_id=122608139]
+position = Vector2(270, 316)
+script = ExtResource("5_nsas7")
+label = "Gerbang (pulang)"
+size = Vector2(100, 22)
+warna = Color(0.53333336, 0.53333336, 0.53333336, 1)
+teks = "Gerbang kampus"
+
+[node name="Pintu" type="Node2D" parent="." unique_id=1682151869]
+
+[node name="Tepi" type="Node2D" parent="." unique_id=1286930996]

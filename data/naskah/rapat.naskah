@@ -1,0 +1,137 @@
+# RAPAT WARGA (hari 27, 19.00, Balai RW) — klimaks cerita Program Kampung Nyaman.
+# Alurnya: warga bicara bergantian -> Dimas boleh membacakan catatan / mengusulkan kolom baru / diam
+# -> hasil menentukan akhir: hasil_baik, hasil_campuran, atau hasil_formal (dibaca ending).
+# Baris yang berubah menurut pilihan pemain memakai "lanjut: ... | jika ..." (pertama yang terpenuhi dipakai).
+
+== r1
+bicara: Pak RW
+teks: Terima kasih sudah hadir. Program Kampung Nyaman sudah berjalan beberapa minggu. Dari 12 kegiatan, 12 sudah terlaksana. Alhamdulillah.
+lanjut: r2
+
+== r2
+bicara: Teh Mira
+teks: Pak, bolanya mulai jam sembilan.
+lanjut: r3
+
+== r3
+bicara: Pak RW
+teks: Siap, kita cepat. Silakan warga menyampaikan tanggapan, satu per satu.
+lanjut: r4
+
+== r4
+bicara: Bu Tati
+teks: Spanduknya bagus, jalannya mulus. Tapi biaya dapur Ibu naik: telur, gas, cabai. Apa ada program yang menyentuh pedagang kecil seperti Ibu? Nak {nama} sempat bantu Ibu ke pasar, dia lihat sendiri harga-harganya. | jika akrab.tati>=3
+teks: Spanduknya bagus, jalannya mulus. Tapi biaya dapur Ibu naik: telur, gas, cabai. Apa ada program yang menyentuh pedagang kecil seperti Ibu?
+lanjut: r5
+
+== r5
+bicara: Fikri
+teks: Jalan dulu ditutup tiga hari. Buat saya itu tiga hari penghasilan berkurang. Bensin naik, ongkos tidak naik sebanding. Lampu jalan bagus, itu saya akui. Tapi saya tidak ingat ada yang tanya dulu soal jadwal penutupannya.
+lanjut: r6
+
+== r6
+bicara: Rani
+teks: Pos layanan buka Senin sampai Kamis jam sembilan sampai dua belas. Banyak warga yang jam segitu kuliah atau kerja. Daftarnya online, tapi berkas fisik tetap harus dibawa.
+lanjut: r_jam | jika flag rw_pertanyaan_rani
+lanjut: r_asep_cek | jika flag hoax_cek
+lanjut: r_asep_fwd | jika flag hoax_forward
+lanjut: r_asep_biasa
+
+# hanya bila Dimas sudah menanyakan jam pos layanan ke Pak RW (lihat rw.naskah: rw_jam)
+== r_jam
+bicara: Pak RW
+teks: Pertanyaan soal jam itu sudah saya teruskan ke kecamatan. Belum ada jawaban resmi, tapi sudah disampaikan.
+lanjut: r_asep_cek | jika flag hoax_cek
+lanjut: r_asep_fwd | jika flag hoax_forward
+lanjut: r_asep_biasa
+
+# tiga versi tanggapan Kang Asep, tergantung apa yang dulu dilakukan Dimas soal pesan hoaks beras
+== r_asep_cek
+bicara: Kang Asep
+teks: Truk pasokan telat waktu jalan ditutup. Tapi jalan barunya enak. Dan untung dulu Kang {nama} ngecek pesan soal beras. Saya hampir ikut menyebar.
+lanjut: r_ustaz
+
+== r_asep_fwd
+bicara: Kang Asep
+teks: Dulu ada pesan soal beras. Banyak yang ikut menyebar, termasuk saya hampir percaya. Mi instan saya habis dalam setengah jam. Kita perlu hati-hati dengan pesan berantai.
+lanjut: r_ustaz
+
+== r_asep_biasa
+bicara: Kang Asep
+teks: Truk pasokan telat waktu jalan ditutup. Tapi jalan barunya enak. Untung ada yang jujur menyampaikan keluhan, bukan cuma pujian.
+lanjut: r_ustaz
+
+== r_ustaz
+bicara: Pak Ustaz Hilman
+teks: Dari masjid, kami titip satu hal: jamaah yang sepuh jarang kebagian kabar program. Mohon pengumuman ditempel juga di masjid, dan jalan jangan ditutup bersamaan dengan jam Jumatan.
+lanjut: r_mira
+
+== r_mira
+bicara: Teh Mira
+teks: Lampu jalan bikin warung saya lebih ramai. Tapi pos layanan itu: yang bertanya jam bukanya justru ke warung saya, bukan ke pos. Mungkin informasinya perlu ditaruh di tempat orang sering lewat.
+lanjut: r_darto
+
+== r_darto
+bicara: Pak Darto
+teks: Saya cuma pemilik kos. Listrik penerangan jalan itu siapa yang bayar? Kalau iuran naik, anak-anak kos ikut kena.
+lanjut: r_rw1
+
+== r_rw1
+bicara: Pak RW
+teks: Saya mengerti semua itu. Tapi saya harus jujur: kecamatan menilai laporan dari jumlah kegiatan dan dokumentasi. Itu format yang diminta. Saya bukan tidak mau mendengar. Saya terikat format.
+lanjut: r_rw2
+
+== r_rw2
+bicara: Pak RW
+teks: Ada yang ingin menambahkan?
+lanjut: r_pilih
+
+# --- giliran Dimas ---
+== r_pilih
+teks: Semua mata beralih ke bangku belakang. Dimas menelan ludah. Es teh di tangannya sudah mencair sejak tadi.
+pilihan:
+- Saya sempat mencatat pengalaman beberapa warga. Boleh saya bacakan? -> r_catatan | jika catatan>=1
+- Pak, bolehkah laporan ditambah kolom 'masalah yang belum selesai'? -> r_usul
+- Cukup, Pak. Saya mendengarkan saja. -> r_diam
+
+# Catatan dibacakan: tiap catatan yang sudah dikumpulkan jadi satu baris
+== r_catatan
+teks: Dimas membuka catatan di ponselnya dan membaca pelan:
+baris: • Bu Tati: biaya dapur naik, belum ada bantuan untuk pedagang kecil. | jika flag testimoni_tati
+baris: • Kang Asep: keramaian naik, tapi pasokan telat saat jalan ditutup. | jika flag testimoni_asep
+baris: • Rani: jam pos layanan bentrok dengan kuliah dan kerja. | jika flag testimoni_rani
+baris: • Fikri: penutupan jalan memotong penghasilan harian. | jika flag testimoni_fikri
+baris: • Teh Mira: informasi jam layanan tidak ada di tempat orang lewat. | jika flag testimoni_mira
+baris: • Pak Ustaz: jamaah sepuh sulit lewat jalan tutup; kabar program jarang sampai ke mereka. | jika flag testimoni_ustaz
+# 4 catatan atau lebih = hasil_baik, kurang dari itu = hasil_campuran
+lanjut: r_catatan_baik | jika catatan>=4
+lanjut: r_catatan_cukup
+
+== r_catatan_baik
+bicara: Pak RW
+teks: Ini… lebih lengkap dari yang saya kira. Akan saya lampirkan sebagai 'Catatan Warga' dan saya minta kecamatan meninjau jam pos layanan. Untuk pertama kalinya, masalah warga ikut tercantum di laporan.
+efek: flag hasil_baik
+lanjut: r_tutup
+
+== r_catatan_cukup
+bicara: Pak RW
+teks: Terima kasih, Nak. Ini masukan berharga. Akan saya lampirkan sebagai 'masukan warga' bersama laporan.
+efek: flag hasil_campuran
+lanjut: r_tutup
+
+== r_usul
+bicara: Pak RW
+teks: Kolom baru… Kecamatan mungkin tidak keberatan. Coba saya tanyakan. Kalau diizinkan, kita tulis: kegiatan selesai, dan masalah yang masih berjalan.
+efek: flag hasil_campuran usul_kolom
+lanjut: r_tutup
+
+== r_diam
+bicara: Pak RW
+teks: Baik. Kalau begitu rapat ditutup. Laporan 12 dari 12 akan dikirim ke kecamatan. Terima kasih semuanya.
+efek: flag hasil_formal
+lanjut: r_tutup
+
+== r_tutup
+bicara: Teh Mira
+teks: Alhamdulillah. Bolanya belum mulai. Ada yang mau nonton di warung saya?
+efek: waktu 90, flag rapat_hadir, mood +4

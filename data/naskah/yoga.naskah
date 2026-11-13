@@ -1,0 +1,15 @@
+# MAS YOGA — penjaga fotokopian (cetak & fotokopi lewat aksi menu_foto)
+
+== hub
+bicara: Mas Yoga
+teks: Pagi, Mas. Mau print atau fotokopi? | jika jam<11
+teks: Siang, Mas. Antreannya lumayan. | jika jam<16
+teks: Sore. Printernya belum ngambek, silakan.
+pilihan:
+- Cetak / fotokopi -> aksi menu_foto
+- Printernya baik-baik saja? -> yoga_printer
+- Permisi.
+
+== yoga_printer
+bicara: Mas Yoga
+teks: Printer? Hidup segan, mati tak mau. Tapi selama masih bisa ngeluarin kertas, kita anggap sehat.

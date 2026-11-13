@@ -1,0 +1,16 @@
+# MANG UJANG — penjual batagor/siomay keliling
+
+== hub
+bicara: Mang Ujang
+teks: Mangga, Aa. Batagornya masih hangat. | jika jam<11
+teks: Mangga, Aa. Mau batagor atau cuanki? | jika jam<16
+teks: Mangga, Aa. Sore-sore begini enaknya yang berkuah.
+pilihan:
+- Pesan -> aksi menu_ujang
+- Mang, gerobaknya keliling ke mana saja? -> ujang_rute
+- Cuma lihat-lihat, Mang.
+
+== ujang_rute
+bicara: Mang Ujang
+teks: Dari Cibiru sampai Ujungberung, Aa. Sore nongkrong di sini karena dekat pos ronda dan masjid: pembeli datang sendiri. Dua puluh tahun dorong gerobak, kaki lebih hafal gang daripada saya sendiri.
+efek: mood +1

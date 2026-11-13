@@ -1,0 +1,247 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/hud.gd" id="1_hqnrr"]
+[ext_resource type="Script" path="res://scripts/hud_ikon.gd" id="2_bo48s"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8qguk"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.06, 0.06, 0.1, 0.74)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.95, 0.78, 0.4, 0.8)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_136eg"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.15, 0.15, 0.2, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oj5la"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.9607843, 0.78039217, 0.41568628, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gss2c"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.15, 0.15, 0.2, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h022r"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.43529412, 0.8117647, 0.43529412, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4jqwt"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.15, 0.15, 0.2, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kicr4"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.9098039, 0.63529414, 0.2901961, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mj13f"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.15, 0.15, 0.2, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0h1do"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.9098039, 0.47843137, 0.627451, 1)
+
+[node name="HUD" type="Control" unique_id=1791800198]
+layout_mode = 3
+anchors_preset = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource("1_hqnrr")
+
+[node name="Panel" type="PanelContainer" parent="." unique_id=1208030601]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 4.0
+offset_bottom = 4.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_8qguk")
+
+[node name="Isi" type="VBoxContainer" parent="Panel" unique_id=407075835]
+layout_mode = 2
+theme_override_constants/separation = 1
+
+[node name="BarisWaktu" type="HBoxContainer" parent="Panel/Isi" unique_id=749455418]
+layout_mode = 2
+theme_override_constants/separation = 3
+
+[node name="Ikon" type="Control" parent="Panel/Isi/BarisWaktu" unique_id=761903548]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(14, 14)
+layout_mode = 2
+script = ExtResource("2_bo48s")
+
+[node name="Top" type="Label" parent="Panel/Isi/BarisWaktu" unique_id=443447238]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 9
+
+[node name="HariBar" type="ProgressBar" parent="Panel/Isi" unique_id=1259300171]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(96, 2)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_136eg")
+theme_override_styles/fill = SubResource("StyleBoxFlat_oj5la")
+min_value = 360.0
+max_value = 1440.0
+value = 360.0
+show_percentage = false
+
+[node name="Uang" type="Label" parent="Panel/Isi" unique_id=216253769]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 9
+theme_override_colors/font_color = Color(0.60784316, 0.8901961, 0.47843137, 1)
+
+[node name="BarisEnergi" type="HBoxContainer" parent="Panel/Isi" unique_id=93321531]
+layout_mode = 2
+
+[node name="LabelEnergi" type="Label" parent="Panel/Isi/BarisEnergi" unique_id=859581431]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "Energi"
+
+[node name="BarEnergi" type="ProgressBar" parent="Panel/Isi/BarisEnergi" unique_id=193218409]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(56, 6)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/background = SubResource("StyleBoxFlat_gss2c")
+theme_override_styles/fill = SubResource("StyleBoxFlat_h022r")
+show_percentage = false
+metadata/warna = Color(0.43529412, 0.8117647, 0.43529412, 1)
+
+[node name="BarisKenyang" type="HBoxContainer" parent="Panel/Isi" unique_id=1934587942]
+layout_mode = 2
+
+[node name="LabelKenyang" type="Label" parent="Panel/Isi/BarisKenyang" unique_id=1244838645]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "Kenyang"
+
+[node name="BarKenyang" type="ProgressBar" parent="Panel/Isi/BarisKenyang" unique_id=1635838037]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(56, 6)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/background = SubResource("StyleBoxFlat_4jqwt")
+theme_override_styles/fill = SubResource("StyleBoxFlat_kicr4")
+show_percentage = false
+metadata/warna = Color(0.9098039, 0.63529414, 0.2901961, 1)
+
+[node name="BarisMood" type="HBoxContainer" parent="Panel/Isi" unique_id=1949790654]
+layout_mode = 2
+
+[node name="LabelMood" type="Label" parent="Panel/Isi/BarisMood" unique_id=279991395]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "Mood"
+
+[node name="BarMood" type="ProgressBar" parent="Panel/Isi/BarisMood" unique_id=258675567]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(56, 6)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/background = SubResource("StyleBoxFlat_mj13f")
+theme_override_styles/fill = SubResource("StyleBoxFlat_0h1do")
+show_percentage = false
+metadata/warna = Color(0.9098039, 0.47843137, 0.627451, 1)
+
+[node name="Tugas" type="Label" parent="Panel/Isi" unique_id=2091351248]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+theme_override_colors/font_color = Color(0.9607843, 0.78039217, 0.41568628, 1)
+
+[node name="Listrik" type="Label" parent="Panel/Isi" unique_id=742634111]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+theme_override_colors/font_color = Color(1, 0.84705883, 0.2901961, 1)
+
+[node name="Lokasi" type="Label" parent="." unique_id=984516085]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 480.0
+offset_top = 8.0
+offset_right = 630.0
+offset_bottom = 31.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+horizontal_alignment = 2
+
+[node name="Prompt" type="Label" parent="." unique_id=980771511]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 300.0
+offset_bottom = 23.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+horizontal_alignment = 1
+
+[node name="Toasts" type="VBoxContainer" parent="." unique_id=738803241]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(230, 0)
+layout_mode = 0
+mouse_filter = 2
+
+[node name="BannerBox" type="VBoxContainer" parent="." unique_id=1158948084]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+mouse_filter = 2
+
+[node name="Banner" type="Label" parent="BannerBox" unique_id=352082629]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_color = Color(1, 0.9137255, 0.627451, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+horizontal_alignment = 1
+
+[node name="BannerSub" type="Label" parent="BannerBox" unique_id=84877035]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 9
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+horizontal_alignment = 1

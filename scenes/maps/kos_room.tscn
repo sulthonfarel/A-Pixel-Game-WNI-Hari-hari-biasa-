@@ -1,0 +1,140 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/location_view.gd" id="1_ivuay"]
+[ext_resource type="Texture2D" path="res://assets/kos_room.png" id="2_8kijx"]
+[ext_resource type="PackedScene" path="res://scenes/sections/player.tscn" id="3_y8usf"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="4_plpt5"]
+[ext_resource type="Script" path="res://scripts/interact_marker.gd" id="5_yai07"]
+[ext_resource type="Script" path="res://scripts/interactable.gd" id="6_wbpvn"]
+[ext_resource type="Script" path="res://scripts/pintu.gd" id="7_uayw8"]
+
+[node name="KosRoom" type="Node2D" unique_id=1157414649]
+script = ExtResource("1_ivuay")
+loc_id = "kos_room"
+nama = "Kamar Kos"
+ukuran = Vector2(480, 270)
+dalam_ruangan = true
+y_min = 226.0
+y_max = 264.0
+tinggi_sprite = 150
+kecepatan_jalan = 1.25
+depth = Vector2(0.72, 0.98)
+radius_interaksi = 2.2
+warna_lantai = Color(0.7254902, 0.63529414, 0.47843137, 1)
+warna_dinding = Color(0.54901963, 0.48235294, 0.39215687, 1)
+jalur_pejalan = Vector2(246, 262)
+lampu_x = PackedFloat32Array()
+
+[node name="Latar" type="Sprite2D" parent="." unique_id=1195763625]
+show_behind_parent = true
+texture = ExtResource("2_8kijx")
+centered = false
+
+[node name="Entities" type="Node2D" parent="." unique_id=1384910095]
+y_sort_enabled = true
+
+[node name="PlayerPratinjau" type="Node2D" parent="Entities" unique_id=175975418 groups=["preview_editor"] instance=ExtResource("3_y8usf")]
+position = Vector2(293, 240)
+script = ExtResource("4_plpt5")
+editor_preview_sprite_height = 150
+
+[node name="InteractMarker" type="Node2D" parent="." unique_id=124813511]
+script = ExtResource("5_yai07")
+
+[node name="Spawns" type="Node2D" parent="." unique_id=431626345]
+
+[node name="masuk" type="Marker2D" parent="Spawns" unique_id=1721473847]
+position = Vector2(293, 240)
+
+[node name="kasur" type="Marker2D" parent="Spawns" unique_id=1907148649]
+position = Vector2(215, 240)
+
+[node name="Objek" type="Node2D" parent="." unique_id=230806]
+
+[node name="jendela" type="Node2D" parent="Objek" unique_id=363500649]
+position = Vector2(17, 20)
+script = ExtResource("6_wbpvn")
+label = "Jendela"
+size = Vector2(95, 150)
+warna = Color(0.62352943, 0.827451, 0.91764706, 1)
+
+[node name="kasur" type="Node2D" parent="Objek" unique_id=1618556433]
+position = Vector2(150, 200)
+script = ExtResource("6_wbpvn")
+label = "Kasur (tidur / istirahat)"
+size = Vector2(106, 22)
+solid = true
+warna = Color(0.36078432, 0.47843137, 0.65882355, 1)
+
+[node name="meja" type="Node2D" parent="Objek" unique_id=2070621256]
+position = Vector2(8, 225)
+script = ExtResource("6_wbpvn")
+label = "Meja belajar (kerjakan tugas)"
+size = Vector2(118, 38)
+solid = true
+warna = Color(0.5411765, 0.3529412, 0.23137255, 1)
+
+[node name="lemari" type="Node2D" parent="Objek" unique_id=54673501]
+position = Vector2(135, 92)
+script = ExtResource("6_wbpvn")
+label = "Lemari"
+size = Vector2(58, 120)
+warna = Color(0.41960785, 0.30980393, 0.22745098, 1)
+
+[node name="rak" type="Node2D" parent="Objek" unique_id=1041553473]
+position = Vector2(308, 226)
+script = ExtResource("6_wbpvn")
+label = "Rak masak (kompor & penanak nasi)"
+size = Vector2(26, 22)
+solid = true
+warna = Color(0.6039216, 0.627451, 0.6509804, 1)
+
+[node name="galon" type="Node2D" parent="Objek" unique_id=1731279043]
+position = Vector2(332, 236)
+script = ExtResource("6_wbpvn")
+label = "Galon air minum"
+size = Vector2(36, 18)
+solid = true
+warna = Color(0.43529412, 0.65882355, 0.8627451, 1)
+
+[node name="kamar_mandi" type="Node2D" parent="Objek" unique_id=1963253781]
+position = Vector2(377, 62)
+script = ExtResource("6_wbpvn")
+label = "Kamar mandi"
+size = Vector2(58, 160)
+warna = Color(0.2901961, 0.3529412, 0.41568628, 1)
+
+[node name="cucian" type="Node2D" parent="Objek" unique_id=2111727135]
+position = Vector2(440, 214)
+script = ExtResource("6_wbpvn")
+label = "Keranjang cucian"
+size = Vector2(38, 20)
+solid = true
+warna = Color(0.8509804, 0.7607843, 0.47843137, 1)
+
+[node name="lampu" type="Node2D" parent="Objek" unique_id=2024183162]
+position = Vector2(14, 164)
+script = ExtResource("6_wbpvn")
+size = Vector2(10, 26)
+syarat_flag = "lampu"
+warna = Color(1, 0.8862745, 0.47843137, 1)
+
+[node name="poster" type="Node2D" parent="Objek" unique_id=1038273217]
+position = Vector2(212, 104)
+script = ExtResource("6_wbpvn")
+size = Vector2(32, 44)
+syarat_flag = "poster"
+warna = Color(0.8784314, 0.47843137, 0.37254903, 1)
+
+[node name="Pintu" type="Node2D" parent="." unique_id=107229009]
+
+[node name="p_keluar" type="Node2D" parent="Pintu" unique_id=1304886729]
+position = Vector2(262, 82)
+script = ExtResource("7_uayw8")
+ke = "koridor"
+spawn = "kamar"
+nama_tujuan = "Koridor kos"
+label = "Keluar ke koridor kos"
+size = Vector2(63, 120)
+
+[node name="Tepi" type="Node2D" parent="." unique_id=1967177422]

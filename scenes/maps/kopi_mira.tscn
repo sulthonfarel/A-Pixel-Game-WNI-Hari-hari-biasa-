@@ -1,0 +1,94 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/location_view.gd" id="1_vfs7l"]
+[ext_resource type="PackedScene" path="res://scenes/sections/player.tscn" id="2_l6wb4"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="3_o06ix"]
+[ext_resource type="Script" path="res://scripts/interact_marker.gd" id="4_8m1fq"]
+[ext_resource type="Script" path="res://scripts/interactable.gd" id="5_xbbp2"]
+[ext_resource type="Script" path="res://scripts/pintu.gd" id="6_uwj4a"]
+
+[node name="KopiMira" type="Node2D" unique_id=1422378018]
+script = ExtResource("1_vfs7l")
+loc_id = "kopi_mira"
+nama = "Kopi Teh Mira"
+dalam_ruangan = true
+y_min = 64.0
+tinggi_sprite = 62
+warna_lantai = Color(0.76862746, 0.6431373, 0.47843137, 1)
+warna_dinding = Color(0.47843137, 0.3529412, 0.22745098, 1)
+jalur_pejalan = Vector2(246, 262)
+lampu_x = PackedFloat32Array()
+
+[node name="Entities" type="Node2D" parent="." unique_id=1330238945]
+y_sort_enabled = true
+
+[node name="PlayerPratinjau" type="Node2D" parent="Entities" unique_id=1304141848 groups=["preview_editor"] instance=ExtResource("2_l6wb4")]
+position = Vector2(330, 300)
+script = ExtResource("3_o06ix")
+editor_preview_sprite_height = 62
+
+[node name="InteractMarker" type="Node2D" parent="." unique_id=2075702832]
+script = ExtResource("4_8m1fq")
+
+[node name="Spawns" type="Node2D" parent="." unique_id=861992430]
+
+[node name="masuk" type="Marker2D" parent="Spawns" unique_id=56010514]
+position = Vector2(330, 300)
+
+[node name="Objek" type="Node2D" parent="." unique_id=1602587024]
+
+[node name="tv" type="Node2D" parent="Objek" unique_id=1719875733]
+position = Vector2(270, 22)
+script = ExtResource("5_xbbp2")
+label = "Televisi"
+size = Vector2(110, 42)
+solid = true
+warna = Color(0.13333334, 0.13333334, 0.13333334, 1)
+teks = "Televisi"
+
+[node name="termos" type="Node2D" parent="Objek" unique_id=122429413]
+position = Vector2(170, 66)
+script = ExtResource("5_xbbp2")
+size = Vector2(30, 22)
+warna = Color(0.7529412, 0.7529412, 0.7529412, 1)
+
+[node name="konter" type="Node2D" parent="Objek" unique_id=857831780]
+position = Vector2(150, 92)
+script = ExtResource("5_xbbp2")
+size = Vector2(300, 36)
+solid = true
+warna = Color(0.3529412, 0.23137255, 0.1254902, 1)
+teks = "Konter"
+
+[node name="meja1" type="Node2D" parent="Objek" unique_id=84560070]
+position = Vector2(70, 196)
+script = ExtResource("5_xbbp2")
+size = Vector2(80, 30)
+solid = true
+warna = Color(0.60784316, 0.44705883, 0.28235295, 1)
+
+[node name="meja2" type="Node2D" parent="Objek" unique_id=820480313]
+position = Vector2(280, 210)
+script = ExtResource("5_xbbp2")
+size = Vector2(80, 30)
+solid = true
+warna = Color(0.60784316, 0.44705883, 0.28235295, 1)
+
+[node name="meja3" type="Node2D" parent="Objek" unique_id=935693629]
+position = Vector2(490, 196)
+script = ExtResource("5_xbbp2")
+size = Vector2(80, 30)
+solid = true
+warna = Color(0.60784316, 0.44705883, 0.28235295, 1)
+
+[node name="Pintu" type="Node2D" parent="." unique_id=105254499]
+
+[node name="p_keluar" type="Node2D" parent="Pintu" unique_id=2027392468]
+position = Vector2(300, 318)
+script = ExtResource("6_uwj4a")
+ke = "jalan"
+spawn = "kopi"
+nama_tujuan = "Gang Sukamaju"
+size = Vector2(60, 24)
+
+[node name="Tepi" type="Node2D" parent="." unique_id=1354029513]
